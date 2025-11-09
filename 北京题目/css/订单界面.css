@@ -1,0 +1,108 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "微软雅黑", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f9f9f9;
+    padding: 20px;
+    min-height: 100vh;
+    /* 沾满整个屏幕高 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.ymtz {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 40px;
+    max-width: 1200px;
+}
+
+/* 导航栏 */
+.ymtz {
+    margin-top: 40px;
+    width: 100%;
+    /* max-width: 1200px; */
+    position: fixed;
+    bottom: 0;
+}
+
+.ymtz ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+}
+
+.ymtz li {
+    flex: 1 1 120px;
+    text-align: center;
+}
+
+.ymtz a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.ymtz a:hover {
+    background-color: #d0d0d0;
+}
+
+
+.nn {
+    width: 500px;
+    /* background-color: aqua; */
+}
+
+.ddd {
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+
+}
+
+.guding1 {
+    margin-top: 20px;
+    /* position: absolute; */
+    top: calc(50% - 260px);
+    /* 50% - 自身高度一半 */
+    left: calc(50% - 360px);
+    /* 50% - 自身宽度一半 */
+}
+
+.guding {
+    margin-top: 20px;
+    /* position: absolute; */
+    top: calc(50% - 260px);
+    /* 50% - 自身高度一半 */
+    left: calc(50% - 360px);
+    /* 50% - 自身宽度一半 */
+}
+
+
+.pagetitle {
+    text-align: center;
+}
+
+.xzddtc {
+    display: none;
+}

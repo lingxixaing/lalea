@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数据监控</title>
+		<link rel="stylesheet" href="../css/订单界面.css" />
+		<style>
+			.pagetitle {
+				text-align: center;
+			}
+
+			/* 新增的图表容器样式 */
+			.chart-container {
+				display: flex;
+				/* 使用flex布局 */
+				flex-wrap: wrap;
+				/* 允许换行 */
+				justify-content: space-around;
+				/* 均匀分布 */
+				margin: 20px 0px;
+			}
+
+			.chart-box {
+				width: 600px;
+				height: 400px;
+				margin: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				/* 可选：添加阴影效果 */
+			}
+		</style>
+		<script src="../css/图形.js"></script>
+	</head>
+	<body>
+		<!-- 图表容器定义 - 使用新的布局结构 -->
+		<div class="chart-container">
+			<div id="main" class="chart-box"></div> <!-- 柱状图容器 -->
+			<div id="main1" class="chart-box"></div> <!-- 折线图容器 -->
+			<div id="main2" class="chart-box"></div> <!-- 饼图容器 -->
+		</div>
+
+		<div class="ymtz">
+			<ul>
+				<li><a href="首页.html">首页</a></li>
+				<li><a href="状态界面.html">状态监控</a></li>
+				<li><a href="数据监控.html">数据监控</a></li>
+				<li><a href="订单界面.html">订单界面</a></li>
+				<li><a href="订单查询.html">订单查询</a></li>
+				<li><a href="报警记录.html">报警记录</a></li>
+				<li><a href="用户管理.html">用户管理</a></li>
+			</ul>
+		</div>
+		<script>
+			function jz() {
+				// 使用立即执行异步函数(IIFE)来加载数据和初始化图表 
+				(async () => {
+					// 1. 获取数据
+					// 从服务器API获取JSON数据 
+					const d = await (await fetch('http://127.0.0.1:1880/sj')).json(),
+						// 提取数据键名(用于X轴分类)
+						k = Object.keys(d[0]),
+						// 提取数据值(用于Y轴数值)
+						v = k.map(k => d[0][k]);
+
+					// 2. 定义图表配置数组
+					// 每个对象包含图表类型和对应的DOM元素ID 
+					[{
+						t: 'bar', // 柱状图 
+						i: 'main' // 对应main容器 
+					}, {}].forEach(o => { // 遍历配置初始化每个图表 
+
+						// 3. 初始化图表并设置选项 
+						echarts.init(document.getElementById(o.i)).setOption({
+							// 通用提示框配置 
+							tooltip: {
+								trigger: 'item' // 数据项触发提示 
+							},
+
+							// X轴配置 
+							// 饼图不显示X轴，其他图表显示分类轴 
+							xAxis: o.t !== 'pie' ? {
+								type: 'category', // 类目轴 
+								data: k // 使用键名作为类目数据 
+							} : {
+								show: false // 饼图隐藏X轴 
+							},
+
+							// Y轴配置 
+							// 饼图不显示Y轴，其他图表显示数值轴 
+							yAxis: o.t !== 'pie' ? {} : { // 默认数值轴配置 
+								show: false // 饼图隐藏Y轴
+							},
+
+							// 系列数据配置 
+							series: [{
+								type: o.t, // 图表类型 
+
+								// 数据配置 
+								// 饼图需要{name,value}格式，其他图表直接使用数值数组 
+								data: o.t === 'pie' ?
+									k.map((n, i) => ({
+										name: n, // 数据项名称 
+										value: v[i] // 数据值 
+									})) : v, // 柱状图和折线图直接使用数值 
+
+								// 饼图特有配置 - 设置半径 
+								radius: o.t === 'pie' ? '70%' : null
+							}]
+						});
+					});
+				})(); // 立即执行函数
+			}
+			jz();
+			setInterval(jz, 1000);
+		</script>
+	</body>
+</html>

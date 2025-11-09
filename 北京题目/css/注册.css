@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+}
+
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: background-image 1.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+.bjt {
+    position: absolute;
+    top: 120px;
+    width: 800px;
+    height: 500px;
+    background-image: url(../img/背景图2.jpg);
+    background-position: center center;
+    background-size: cover;
+    content: inherit;
+    /* text-align: center; */
+    position: absolute;
+    top: calc(50% - 260px);
+    /* 50% - 自身高度一半 */
+    left: calc(50% - 360px);
+    /* 50% - 自身宽度一半 */
+}
+
+.bjt h1 {
+    text-align: center;
+    margin-top: -30px;
+}
+
+.nrt {
+    padding: 50px 0 0 0;
+    font-size: 80%;
+    font-family: "宋体";
+    text-align: center;
+}
+
+.srk {
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.srk img {
+    width: 45px;
+    opacity: 0.9;
+    float: left;
+    margin-left: 200px;
+}
+
+.srk input {
+    width: 270px;
+    height: 35px;
+    margin-left: -250px;
+    margin-top: 2.5px;
+    background-color: aliceblue;
+}
+
+.gxk_input {
+    zoom: 170%;
+    float: left;
+    margin-right: 10px;
+}
+
+.wos {
+    margin-top: 25px;
+    margin-left: 260px;
+}
+
+.ann {
+    margin: 38px 0 0 -110px;
+}
+
+.ann button {
+    width: 75px;
+    height: 35px;
+    font-size: 20px;
+    font-family: "黑体";
+    margin-left: 40px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#yhgl {
+    width: 403px;
+    height: 37px;
+    margin: 40px 0 0 -250px;
+}
+
+.yin {
+    display: none;
+}

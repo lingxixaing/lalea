@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="../css/订单界面.css" />
+        <style>
+            .pagetitle {
+                text-align: center;
+            }
+        </style>
+        <script>
+            addEventListener('DOMContentLoaded', () => (u = document.getElementById('udisplay'), n = localStorage
+                .username) && u && n && (u.textContent = '  当前用户:' + n));
+            addEventListener('DOMContentLoaded', () => (u = document.getElementById('usertpyuy'), n = localStorage
+                .usertype) && u && n && (u.textContent = '  当前账户类型:' + n));
+        </script>
+    </head>
+    <body>
+        <marquee direction="up" scrollamount="3">
+            <p class="pagetitle">欢迎进入首页</p>
+            <br />
+            <P class="pagetitle">请选择您的操作界面</P>
+        </marquee>
+
+        <h1 style="text-align: center;">
+            2025年05月14日<span id="sj"></span>
+        </h1>
+
+        <p id="usertpyuy"></p>
+        <p id="udisplay"></p>
+        <div class="ymtz">
+            <ul>
+                <li><a href="首页.html">首页</a></li>
+                <li><a href="状态界面.html">状态监控</a></li>
+                <li><a href="数据监控.html">数据监控</a></li>
+                <li><a href="订单界面.html">订单界面</a></li>
+                <li><a href="订单查询.html">订单查询</a></li>
+                <li><a href="报警记录.html">报警记录</a></li>
+                <li><a href="用户管理.html">用户管理</a></li>
+            </ul>
+        </div>
+        <script>
+            function time() {
+                var a = new Date();
+                var b = a.toLocaleTimeString();
+                document.getElementById('sj').innerHTML = b;
+            }
+            time();
+            setInterval(time, 1000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="../css/订单界面.css" />
+        <style>
+            .pagetitle {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="">
+            用户管理
+        </div>
+        <div class="ymtz">
+            <ul>
+                <li><a href="首页.html">首页</a></li>
+                <li><a href="状态界面.html">状态监控</a></li>
+                <li><a href="数据监控.html">数据监控</a></li>
+                <li><a href="订单界面.html">订单界面</a></li>
+                <li><a href="订单查询.html">订单查询</a></li>
+                <li><a href="报警记录.html">报警记录</a></li>
+                <li><a href="用户管理.html">用户管理</a></li>
+            </ul>
+        </div>
+        <script>
+            function time() {
+                var a = new Date();
+                var b = a.toLocaleTimeString();
+                document.getElementById('sj').innerHTML = b;
+            }
+            setInterval(time, 1000);
+        </script>
+    </body>
+</html>

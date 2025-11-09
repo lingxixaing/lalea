@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/注册.css">
+    <title>工业 4.0 注册</title>
+</head>
+<body>
+    <div class="bjt">
+        <div class="nrt">
+            <h1>工业4.0信息管理系统</h1>
+            <div class="srk"><img src="./img/yonghu.png"><input id="u" placeholder="用户名"></div>
+            <div class="srk"><img src="./img/yuechi.png"><input type="password" id="p" placeholder="密码"></div>
+            <div class="srk"><img src="./img/yuechi.png"><input type="password" id="pp" placeholder="确认密码"></div>
+            <select id="yhgl">
+                <option selected></option>
+                <option value="操作员">操作员</option>
+                <option value="车间管理员">车间管理员</option>
+                <option value="工厂管理员">工厂管理员</option>
+                <option value="超级管理员">超级管理员</option>
+            </select>
+            <div class="ann">
+                <button class="dlann"><a href="登录.html">登录</a></button>
+                <button onclick="reg()">注册</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const imgs = ["./img/内容图.jpg", "./img/背景图3.jpg", "./img/背景图1.jpg"];
+        let i = 0;
+        document.body.style.backgroundImage = `url(${imgs[i]})`;
+        setInterval(() => 
+            document.body.style.backgroundImage = `url(${imgs[++i % imgs.length]})`, 2000
+        );
+
+        // 注册函数，使用传统 fetch 链式调用
+        function reg() {
+            const [u, p, pp, t] = ['u', 'p', 'pp', 'yhgl'].map(id => 
+                document.getElementById(id).value
+            );
+
+            if (!u || !p || !t) return alert('请输入信息');
+            if (p !== pp) return alert('密码不一致');
+
+            fetch('http://127.0.0.1:1880/zc', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ u, p, t })
+            })
+           .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP ${res.status}`);
+                }
+                return res.json();
+            })
+           .then(data => {
+                alert(data.success ? '注册成功' : `注册失败：${data.message || '未知错误'}`);
+                if (data.success) {
+                    ['u', 'p', 'pp', 'yhgl'].forEach(id => 
+                        document.getElementById(id).value = ''
+                    );
+                }
+            })
+           .catch(err => {
+                alert(`注册失败：${err.message.includes('HTTP') ? '服务器错误' : '网络错误'}`);
+            });
+        }
+    </script>
+</body>
+</html>

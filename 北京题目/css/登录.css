@@ -1,0 +1,108 @@
+/* 全局样式重置 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* 链接样式 */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* body 样式 */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: fixed center / cover no-repeat;
+    transition: background-image 1.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+/* 背景容器样式 */
+.bjt {
+    position: absolute;
+    width: 800px;
+    height: 500px;
+    background: url(../img/背景图2.jpg) center / cover;
+    top: calc(50% - 250px);
+    left: calc(50% - 400px);
+}
+
+/* 容器内标题样式 */
+.bjt h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* 内容区域样式 */
+.nrt {
+    padding-top: 50px;
+    font: 80% "宋体";
+    text-align: center;
+}
+
+/* 输入框容器样式 */
+.srk {
+    margin-top: 7%;
+    text-align: center;
+}
+
+/* 输入框图标样式 */
+.srk img {
+    width: 45px;
+    opacity: 0.9;
+    float: left;
+    margin-left: 200px;
+}
+
+/* 输入框样式 */
+.srk input {
+    width: 270px;
+    height: 35px;
+    margin: 2.5px 0 0 -250px;
+    background: aliceblue;
+}
+
+/* 复选框输入样式 */
+.gxk_input {
+    zoom: 170%;
+    float: left;
+    margin-right: 10px;
+}
+
+/* 记住密码区域样式 */
+.wos {
+    margin: 25px 0 0 260px;
+}
+
+/* 按钮容器样式 */
+.ann {
+    margin: 9% 0 0 200px;
+}
+
+/* 按钮样式 */
+.ann button {
+    width: 75px;
+    height: 35px;
+    font: 20px "黑体";
+    margin-left: 40px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* 用户管理相关元素样式 */
+#yhgl {
+    width: 403px;
+    height: 37px;
+    margin: 40px 0 0 -250px;
+}
+
+/* 隐藏元素样式 */
+.yin {
+    display: none;
+}
